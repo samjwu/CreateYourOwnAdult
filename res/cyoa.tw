@@ -14,9 +14,20 @@ CYOA
 
 Create Your Own Adult
 
+:: StoryCaption
+
+<span class="green">Strength</span>: $strength
+
+<span class="blue">Intelligence</span>: $intelligence 
+
+<span class="red">Charm</span>: $charm
+
 :: Start {"position":"100,200"}
 
 [[Start New Game|Birth]]
+<<set $strength = 0>>
+<<set $intelligence = 0>>
+<<set $charm = 0>>
 
 :: Birth {"position":"300,200"}
 
@@ -30,25 +41,17 @@ What is the first thing you do?
 
 [[Try to Talk|Gain Charm 1]]
 
-<<set $strength = 0>>
-<<set $intelligence = 0>>
-<<set $charm = 0>>
-Stats: <<$strength $intelligence $charm>>
-
 :: Gain Strength 1 {"position":"100,400"}
 
+You become a little bit <span class="green">stronger</span>
 <<set $strength += 1>>
-
-Stats: <<$strength $intelligence $charm>>
 
 :: Gain Intelligence 1 {"position":"300,400"}
 
+You become a little bit <span class="blue">smarter</span>
 <<set $intelligence += 1>>
-
-Stats: <<$strength $intelligence $charm>>
 
 :: Gain Charm 1 {"position":"500,400"}
 
+You become a little bit more <span class="red">sociable</span>
 <<set $charm += 1>>
-
-Stats: <<$strength $intelligence $charm>>
