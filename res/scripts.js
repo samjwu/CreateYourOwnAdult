@@ -1,5 +1,6 @@
 // using global window object
 window.ageMap = new Map([
+    [-1, "unborn"],
     [0, "baby"],
     [1, "child"],
     [2, "teen"],
@@ -11,7 +12,7 @@ window.eventPool = new Object();
 
 // using SugarCube's author-use setup object
 setup.initializeStats = function() {
-    state.active.variables.age = 0;
+    state.active.variables.age = -1;
 
     state.active.variables.strength = 0;
     state.active.variables.intelligence = 0;

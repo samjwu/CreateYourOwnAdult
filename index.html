@@ -114,6 +114,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
     color: yellow
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">// using global window object
 window.ageMap = new Map([
+    [-1, "unborn"],
     [0, "baby"],
     [1, "child"],
     [2, "teen"],
@@ -125,7 +126,7 @@ window.eventPool = new Object();
 
 // using SugarCube's author-use setup object
 setup.initializeStats = function() {
-    state.active.variables.age = 0;
+    state.active.variables.age = -1;
 
     state.active.variables.strength = 0;
     state.active.variables.intelligence = 0;
@@ -161,7 +162,9 @@ What is the first thing you do?
 
 [[Play with your Toys|Gain Intelligence]]
 
-[[Try to Talk|Gain Charm]]</tw-passagedata><tw-passagedata pid="5" name="Gain Strength" tags="" position="100,400" size="100,100">You become a little bit &lt;span class=&quot;green&quot;&gt;stronger&lt;/span&gt;
+[[Try to Talk|Gain Charm]]
+
+&lt;&lt;set $age = 0&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Gain Strength" tags="" position="100,400" size="100,100">You become a little bit &lt;span class=&quot;green&quot;&gt;stronger&lt;/span&gt;
 &lt;&lt;script&gt;&gt; setup.changeStrength(1); &lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Gain Intelligence" tags="" position="300,400" size="100,100">You become a little bit &lt;span class=&quot;blue&quot;&gt;smarter&lt;/span&gt;
 &lt;&lt;script&gt;&gt; setup.changeIntelligence(1); &lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Gain Charm" tags="" position="500,400" size="100,100">You become a little bit more &lt;span class=&quot;red&quot;&gt;sociable&lt;/span&gt;
 &lt;&lt;script&gt;&gt; setup.changeCharm(1); &lt;&lt;/script&gt;&gt;</tw-passagedata></tw-storydata>

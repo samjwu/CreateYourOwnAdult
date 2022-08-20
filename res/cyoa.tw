@@ -41,6 +41,8 @@ What is the first thing you do?
 
 [[Try to Talk|Gain Charm]]
 
+<<set $age = 0>>
+
 :: Gain Strength {"position":"100,400"}
 
 You become a little bit <span class="green">stronger</span>
