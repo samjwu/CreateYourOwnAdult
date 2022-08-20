@@ -16,6 +16,8 @@ Create Your Own Adult
 
 :: StoryCaption
 
+<span class="yellow">Age:</span> <<print setup.getAgeString($age)>>
+
 <span class="green">Strength</span>: $strength
 
 <span class="blue">Intelligence</span>: $intelligence 

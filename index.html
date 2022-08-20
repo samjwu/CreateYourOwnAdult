@@ -108,13 +108,32 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 
 .red {
     color: #ff0066
+}
+
+.yellow {
+    color: yellow
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">// using global window object
+window.ageMap = new Map([
+    [0, "baby"],
+    [1, "child"],
+    [2, "teen"],
+    [3, "adult"],
+    [4, "senior"],
+]);
+
+window.eventPool = new Object();
 
 // using SugarCube's author-use setup object
 setup.initializeStats = function() {
+    state.active.variables.age = 0;
+
     state.active.variables.strength = 0;
     state.active.variables.intelligence = 0;
     state.active.variables.charm = 0;
+}
+
+setup.getAgeString = function(ageInt) {
+    return ageMap.get(ageInt);
 }
 
 setup.changeStrength = function(change) {
@@ -127,7 +146,9 @@ setup.changeIntelligence = function(change) {
 
 setup.changeCharm = function(change) {
     state.active.variables.charm += change;
-}</script><tw-passagedata pid="1" name="StorySubtitle" tags="" position="400,0" size="100,100">Create Your Own Adult</tw-passagedata><tw-passagedata pid="2" name="StoryCaption" tags="" position="225,100" size="100,100">&lt;span class=&quot;green&quot;&gt;Strength&lt;/span&gt;: $strength
+}</script><tw-passagedata pid="1" name="StorySubtitle" tags="" position="400,0" size="100,100">Create Your Own Adult</tw-passagedata><tw-passagedata pid="2" name="StoryCaption" tags="" position="225,100" size="100,100">&lt;span class=&quot;yellow&quot;&gt;Age:&lt;/span&gt; &lt;&lt;print setup.getAgeString($age)&gt;&gt;
+
+&lt;span class=&quot;green&quot;&gt;Strength&lt;/span&gt;: $strength
 
 &lt;span class=&quot;blue&quot;&gt;Intelligence&lt;/span&gt;: $intelligence 
 
