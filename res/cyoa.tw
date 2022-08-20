@@ -23,3 +23,32 @@ Create Your Own Adult
 Congratulations! You were born on <<print new Date()>>
 
 What is the first thing you do?
+
+[[Try to Walk|Gain Strength 1]]
+
+[[Play with your Toys|Gain Intelligence 1]]
+
+[[Try to Talk|Gain Charm 1]]
+
+<<set $strength = 0>>
+<<set $intelligence = 0>>
+<<set $charm = 0>>
+Stats: <<$strength $intelligence $charm>>
+
+:: Gain Strength 1 {"position":"100,400"}
+
+<<set $strength += 1>>
+
+Stats: <<$strength $intelligence $charm>>
+
+:: Gain Intelligence 1 {"position":"300,400"}
+
+<<set $intelligence += 1>>
+
+Stats: <<$strength $intelligence $charm>>
+
+:: Gain Charm 1 {"position":"500,400"}
+
+<<set $charm += 1>>
+
+Stats: <<$strength $intelligence $charm>>
