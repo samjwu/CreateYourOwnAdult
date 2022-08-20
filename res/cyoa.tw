@@ -1,0 +1,25 @@
+:: StoryData {"position":"0,0"}
+{
+  "ifid": "601F8520-AC71-4CF9-8C22-B51EB716CA83",
+  "format": "SugarCube",
+  "format-version": "2.36.1",
+  "zoom": 0.25
+}
+
+:: StoryTitle {"position":"200,0"}
+
+CYOA
+
+:: StorySubtitle {"position":"400,0"}
+
+Create Your Own Adult
+
+:: Start {"position":"100,200"}
+
+[[Start New Game|Birth]]
+
+:: Birth {"position":"300,200"}
+
+Congratulations! You were born on <<print new Date()>>
+
+What is the first thing you do?
