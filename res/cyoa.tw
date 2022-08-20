@@ -25,9 +25,7 @@ Create Your Own Adult
 :: Start {"position":"100,200"}
 
 [[Start New Game|Birth]]
-<<set $strength = 0>>
-<<set $intelligence = 0>>
-<<set $charm = 0>>
+<<script>> setup.initializeStats(); <</script>>
 
 :: Birth {"position":"300,200"}
 
@@ -35,23 +33,23 @@ Congratulations! You were born on <<print new Date()>>
 
 What is the first thing you do?
 
-[[Try to Walk|Gain Strength 1]]
+[[Try to Walk|Gain Strength]]
 
-[[Play with your Toys|Gain Intelligence 1]]
+[[Play with your Toys|Gain Intelligence]]
 
-[[Try to Talk|Gain Charm 1]]
+[[Try to Talk|Gain Charm]]
 
-:: Gain Strength 1 {"position":"100,400"}
+:: Gain Strength {"position":"100,400"}
 
 You become a little bit <span class="green">stronger</span>
-<<set $strength += 1>>
+<<script>> setup.changeStrength(1); <</script>>
 
-:: Gain Intelligence 1 {"position":"300,400"}
+:: Gain Intelligence {"position":"300,400"}
 
 You become a little bit <span class="blue">smarter</span>
-<<set $intelligence += 1>>
+<<script>> setup.changeIntelligence(1); <</script>>
 
-:: Gain Charm 1 {"position":"500,400"}
+:: Gain Charm {"position":"500,400"}
 
 You become a little bit more <span class="red">sociable</span>
-<<set $charm += 1>>
+<<script>> setup.changeCharm(1); <</script>>
