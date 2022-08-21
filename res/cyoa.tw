@@ -7,32 +7,24 @@
 }
 
 :: StoryTitle {"position":"200,0"}
-
 CYOA
 
 :: StorySubtitle {"position":"400,0"}
-
 Create Your Own Adult
 
 :: StoryCaption
-
 <span class="yellow">Age:</span> <<print setup.getAgeString($age)>>
-
 <span class="green">Strength</span>: $strength
-
 <span class="blue">Intelligence</span>: $intelligence 
-
 <span class="red">Charm</span>: $charm
 
 :: Start {"position":"100,200"}
-
 [[Start New Game|Birth]]
 <<script>> setup.initializeStats(); <</script>>
 
 :: Birth {"position":"300,200"}
-
 Congratulations! You were born on <<print new Date()>>
-
+<<set $age = 0>>
 What is the first thing you do?
 
 [[Try to Walk|Gain Strength]]
@@ -41,19 +33,20 @@ What is the first thing you do?
 
 [[Try to Talk|Gain Charm]]
 
-<<set $age = 0>>
-
 :: Gain Strength {"position":"100,400"}
-
 You become a little bit <span class="green">stronger</span>
 <<script>> setup.changeStrength(1); <</script>>
+[[Continue|Event]]
 
 :: Gain Intelligence {"position":"300,400"}
-
 You become a little bit <span class="blue">smarter</span>
 <<script>> setup.changeIntelligence(1); <</script>>
+[[Continue|Event]]
 
 :: Gain Charm {"position":"500,400"}
-
 You become a little bit more <span class="red">sociable</span>
 <<script>> setup.changeCharm(1); <</script>>
+[[Continue|Event]]
+
+:: Event
+
