@@ -66,8 +66,8 @@ function waitForElement(selector) {
     });
 }
 
-setup.replaceText = function(elementId, object) {
-    waitForElement('#'+elementId).then(() => {
-        document.getElementById(elementId).innerHTML = object.description;
+setup.replaceText = function(selector, object) {
+    waitForElement(selector).then(() => {
+        $(selector).text(object.description);
     });
 }

@@ -50,4 +50,4 @@ You become a little bit more <span class="red">sociable</span>
 
 :: Event
 <p id="event-text">Event Text Goes Here</p>
-<<script>>setup.replaceText("event-text", eventPool[state.active.variables.age][0])<</script>>
+<<script>>setup.replaceText("#event-text", eventPool[state.active.variables.age][0])<</script>>
