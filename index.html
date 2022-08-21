@@ -112,7 +112,28 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 
 .yellow {
     color: yellow
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">// using global window object
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "events.js" */
+// using global window Array
+
+/*
+Event object
+    description: text for the event settings
+    options: maps strings indicating possible actions to outcomes
+*/
+var babyEvents = new Array();
+var babyEvent1 = new Object();
+
+var childEvents = new Array();
+
+var teenEvents = new Array();
+
+var adultEvents = new Array();
+
+var seniorEvents = new Array();
+
+window.eventPool = new Array(babyEvents, childEvents, teenEvents, adultEvents, seniorEvents);
+/* twine-user-script #2: "stats.js" */
+// using global window Array
 window.ageMap = new Map([
     [-1, "unborn"],
     [0, "baby"],
@@ -121,8 +142,6 @@ window.ageMap = new Map([
     [3, "adult"],
     [4, "senior"],
 ]);
-
-window.eventPool = new Object();
 
 // using SugarCube's author-use setup object
 setup.initializeStats = function() {

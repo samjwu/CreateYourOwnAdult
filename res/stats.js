@@ -1,4 +1,4 @@
-// using global window object
+// using global window Array
 window.ageMap = new Map([
     [-1, "unborn"],
     [0, "baby"],
@@ -7,8 +7,6 @@ window.ageMap = new Map([
     [3, "adult"],
     [4, "senior"],
 ]);
-
-window.eventPool = new Object();
 
 // using SugarCube's author-use setup object
 setup.initializeStats = function() {
