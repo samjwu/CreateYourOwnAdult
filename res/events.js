@@ -27,7 +27,8 @@ Event object
     options: maps strings indicating possible actions to outcomes
 */
 var babyEvent1 = {
-    description: "You spot a bottle containing some sort of white liquid. What do you do?",
+    description: "You spot a bottle containing some sort of white liquid.\n\n\
+        What do you do?",
     options: new Map([
         ["Drink it", babyOutcome1_1],
         ["Taste it", babyOutcome1_2],
@@ -67,7 +68,12 @@ function waitForElement(selector) {
 }
 
 setup.replaceText = function(selector, object) {
+    console.log(Array.from(object.options.keys())[0]);
+    var fullText = object.description;
+    for (var [key, value] of object.options.entries()) {
+        fullText += '\n\n' + key;
+    }
     waitForElement(selector).then(() => {
-        $(selector).text(object.description);
+        $(selector).text(fullText);
     });
 }
