@@ -1,7 +1,3 @@
-// $.getscript("stats.js", function() {
-//     setup.changeCoreStats();
-// });
-
 /*
 Outcome object
     description: text for the results of the choice
@@ -76,7 +72,7 @@ function waitForElement(selector) {
 }
 
 setup.generateEvent = function(selector, object) {
-    var options = new Array();
+    var optionElements = new Array();
     for (var [key, value] of object.options.entries()) {
         var optionAnchor = document.createElement("a");
         var optionParagraph = document.createElement("p");
@@ -84,19 +80,24 @@ setup.generateEvent = function(selector, object) {
         optionParagraph.appendChild(optionText);
         optionAnchor.appendChild(optionParagraph);
 
+        console.log(value.description);
+
         optionAnchor.onclick = function() {
-            alert(value);
+            var eventTextElement = document.getElementById("event-text");
+            var outcomeParagraph = document.createElement("p");
+            outcomeParagraph.innerHTML = value.description;
+            eventTextElement.appendChild(outcomeParagraph);
         };
 
-        options.push(optionAnchor);
+        optionElements.push(optionAnchor);
     }
 
     waitForElement(selector).then(() => {
         $(selector).html(object.description);
 
-        var eventText = document.getElementById("event-text");
-        for (var option of options) {
-            eventText.appendChild(option);
+        var eventTextElement = document.getElementById("event-text");
+        for (var option of optionElements) {
+            eventTextElement.appendChild(option);
         }
     });
 }
