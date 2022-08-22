@@ -1,24 +1,32 @@
+// $.getscript("stats.js", function() {
+//     setup.changeCoreStats();
+// });
+
 /*
 Outcome object
-    description: text for the results of the event
+    description: text for the results of the choice
+    callback: function to be run as a result of the choice
 */
 var babyOutcome1_1 = {
     description: "It turns out that white liquid was milk! \
         You're lucky it wasn't something dangerous. \
-        The milk makes your bones <span class='green'>stronger</span>."
+        The milk makes your bones <span class='green'>stronger</span>.",
+    callback: setup.changeCoreStats(1, 0, 0)
 };
 var babyOutcome1_2 = {
     description: "It turns out that white liquid was milk! \
         Good thing you tasted a bit before drinking it all down. \
         That would have been stupid. \
         What you did instead was definitely <span class='blue'>smarter</span>. \
-        Also, the milk makes your bones <span class='green'>stronger</span>."
+        Also, the milk makes your bones <span class='green'>stronger</span>.",
+    callback: setup.changeCoreStats(1, 1, 0)
 };
 var babyOutcome1_3 = {
     description: "It turns out that white liquid was milk! \
         Good job! \
         You <span class='red'>improved your social skills</span> a bit. \
-        Plus the milk makes your bones <span class='green'>stronger</span>."
+        Plus the milk makes your bones <span class='green'>stronger</span>.",
+    callback: setup.changeCoreStats(1, 0, 1)
 };
 
 /*
@@ -67,7 +75,7 @@ function waitForElement(selector) {
     });
 }
 
-setup.replaceText = function(selector, object) {
+setup.generateEvent = function(selector, object) {
     var options = new Array();
     for (var [key, value] of object.options.entries()) {
         var optionAnchor = document.createElement("a");
@@ -77,7 +85,7 @@ setup.replaceText = function(selector, object) {
         optionAnchor.appendChild(optionParagraph);
 
         optionAnchor.onclick = function() {
-            alert(optionText);
+            alert(value);
         };
 
         options.push(optionAnchor);

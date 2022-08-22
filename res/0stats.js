@@ -32,3 +32,9 @@ setup.changeIntelligence = function(change) {
 setup.changeCharm = function(change) {
     state.active.variables.charm += change;
 }
+
+setup.changeCoreStats = function(changeStr, changeInt, changeCha) {
+    state.active.variables.strength += changeStr;
+    state.active.variables.intelligence += changeInt;
+    state.active.variables.charm += changeCha;
+}
