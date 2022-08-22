@@ -191,13 +191,15 @@ setup.replaceText = function(selector, object) {
     var fullText = object.description;
     var options = new Array();
     for (var [key, value] of object.options.entries()) {
-        var option = document.createElement("p");
+        var optionAnchor = document.createElement("a");
+        var optionParagraph = document.createElement("p");
         var optionText = document.createTextNode(key);
-        option.appendChild(optionText);
-        option.onclick = function() {
+        optionParagraph.appendChild(optionText);
+        optionAnchor.appendChild(optionParagraph);
+        optionAnchor.onclick = function() {
             alert(optionText);
         };
-        options.push(option);
+        options.push(optionAnchor);
     }
     waitForElement(selector).then(() => {
         $(selector).html(fullText);
