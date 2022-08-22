@@ -7,7 +7,7 @@ var babyOutcome1_1 = {
     description: "It turns out that white liquid was milk! \
         You're lucky it wasn't something dangerous. \
         The milk makes your bones <span class='green'>stronger</span>.",
-    callback: setup.changeCoreStats(1, 0, 0)
+    callback: function() {setup.changeCoreStats(1, 0, 0)}
 };
 var babyOutcome1_2 = {
     description: "It turns out that white liquid was milk! \
@@ -15,14 +15,14 @@ var babyOutcome1_2 = {
         That would have been stupid. \
         What you did instead was definitely <span class='blue'>smarter</span>. \
         Also, the milk makes your bones <span class='green'>stronger</span>.",
-    callback: setup.changeCoreStats(1, 1, 0)
+    callback: function() {setup.changeCoreStats(1, 1, 0)}
 };
 var babyOutcome1_3 = {
     description: "It turns out that white liquid was milk! \
         Good job! \
         You <span class='red'>improved your social skills</span> a bit. \
         Plus the milk makes your bones <span class='green'>stronger</span>.",
-    callback: setup.changeCoreStats(1, 0, 1)
+    callback: function() {setup.changeCoreStats(1, 0, 1)}
 };
 
 /*
@@ -73,6 +73,7 @@ function waitForElement(selector) {
 
 setup.generateEvent = function(selector, object) {
     var optionElements = new Array();
+
     for (var [key, value] of object.options.entries()) {
         var optionAnchor = document.createElement("a");
         var optionParagraph = document.createElement("p");
@@ -82,11 +83,12 @@ setup.generateEvent = function(selector, object) {
 
         console.log(value.description);
 
+        var outcomeParagraph = document.createElement("p");
+        outcomeParagraph.innerHTML = value.description;
         optionAnchor.onclick = function() {
             var eventTextElement = document.getElementById("event-text");
-            var outcomeParagraph = document.createElement("p");
-            outcomeParagraph.innerHTML = value.description;
             eventTextElement.appendChild(outcomeParagraph);
+            value.callback();
         };
 
         optionElements.push(optionAnchor);
