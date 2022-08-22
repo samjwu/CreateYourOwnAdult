@@ -68,8 +68,6 @@ function waitForElement(selector) {
 }
 
 setup.replaceText = function(selector, object) {
-    console.log(Array.from(object.options.keys())[0]);
-    var fullText = object.description;
     var options = new Array();
     for (var [key, value] of object.options.entries()) {
         var optionAnchor = document.createElement("a");
@@ -77,14 +75,18 @@ setup.replaceText = function(selector, object) {
         var optionText = document.createTextNode(key);
         optionParagraph.appendChild(optionText);
         optionAnchor.appendChild(optionParagraph);
+
         optionAnchor.onclick = function() {
             alert(optionText);
         };
+
         options.push(optionAnchor);
     }
+
     waitForElement(selector).then(() => {
-        $(selector).html(fullText);
-        const eventText = document.getElementById("event-text");
+        $(selector).html(object.description);
+
+        var eventText = document.getElementById("event-text");
         for (var option of options) {
             eventText.appendChild(option);
         }
