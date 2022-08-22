@@ -70,17 +70,21 @@ function waitForElement(selector) {
 setup.replaceText = function(selector, object) {
     console.log(Array.from(object.options.keys())[0]);
     var fullText = object.description;
-    var keyIndex = 0;
+    var options = new Array();
     for (var [key, value] of object.options.entries()) {
-        //var option = document.createElement("option"+keyIndex);
-        var option = '<p>' + key + '</p>';
+        var option = document.createElement("p");
+        var optionText = document.createTextNode(key);
+        option.appendChild(optionText);
         option.onclick = function() {
-            alert('blah');
+            alert(optionText);
         };
-        fullText += option;
-        keyIndex += 1;
+        options.push(option);
     }
     waitForElement(selector).then(() => {
         $(selector).html(fullText);
+        const eventText = document.getElementById("event-text");
+        for (var option of options) {
+            eventText.appendChild(option);
+        }
     });
 }
