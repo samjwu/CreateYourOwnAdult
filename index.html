@@ -147,7 +147,7 @@ Event object
 */
 var babyEvent1 = {
     description: "You spot a bottle containing some sort of white liquid.\n\n\
-        What do you do?",
+        What do you do?\n\n",
     options: new Map([
         ["Drink it", babyOutcome1_1],
         ["Taste it", babyOutcome1_2],
@@ -189,11 +189,18 @@ function waitForElement(selector) {
 setup.replaceText = function(selector, object) {
     console.log(Array.from(object.options.keys())[0]);
     var fullText = object.description;
+    var keyIndex = 0;
     for (var [key, value] of object.options.entries()) {
-        fullText += '\n\n' + key;
+        //var option = document.createElement("option"+keyIndex);
+        var option = '<p>' + key + '</p>';
+        option.onclick = function() {
+            alert('blah');
+        };
+        fullText += option;
+        keyIndex += 1;
     }
     waitForElement(selector).then(() => {
-        $(selector).text(fullText);
+        $(selector).html(fullText);
     });
 }
 /* twine-user-script #2: "stats.js" */
@@ -249,6 +256,7 @@ What is the first thing you do?
 [[Continue|Event]]</tw-passagedata><tw-passagedata pid="7" name="Gain Charm" tags="" position="500,400" size="100,100">You become a little bit more &lt;span class=&quot;red&quot;&gt;sociable&lt;/span&gt;
 &lt;&lt;script&gt;&gt; setup.changeCharm(1); &lt;&lt;/script&gt;&gt;
 [[Continue|Event]]</tw-passagedata><tw-passagedata pid="8" name="Event" tags="" position="975,100" size="100,100">&lt;p id=&quot;event-text&quot;&gt;Event Text Goes Here&lt;/p&gt;
+&lt;p id=&quot;event-options&quot;&gt;Event Options Go Here&lt;/p&gt;
 &lt;&lt;script&gt;&gt;setup.replaceText(&quot;#event-text&quot;, eventPool[state.active.variables.age][0])&lt;&lt;/script&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */

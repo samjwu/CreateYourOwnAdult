@@ -28,7 +28,7 @@ Event object
 */
 var babyEvent1 = {
     description: "You spot a bottle containing some sort of white liquid.\n\n\
-        What do you do?",
+        What do you do?\n\n",
     options: new Map([
         ["Drink it", babyOutcome1_1],
         ["Taste it", babyOutcome1_2],
@@ -70,10 +70,17 @@ function waitForElement(selector) {
 setup.replaceText = function(selector, object) {
     console.log(Array.from(object.options.keys())[0]);
     var fullText = object.description;
+    var keyIndex = 0;
     for (var [key, value] of object.options.entries()) {
-        fullText += '\n\n' + key;
+        //var option = document.createElement("option"+keyIndex);
+        var option = '<p>' + key + '</p>';
+        option.onclick = function() {
+            alert('blah');
+        };
+        fullText += option;
+        keyIndex += 1;
     }
     waitForElement(selector).then(() => {
-        $(selector).text(fullText);
+        $(selector).html(fullText);
     });
 }
