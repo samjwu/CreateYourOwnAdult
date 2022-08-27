@@ -241,16 +241,15 @@ function clearEventAndOptionText(selector) {
 }
 
 function generateOutcome(textSelector, optionSelector, value, optionAnchor, optionIndex) {
-    var outcomeParagraph = document.createElement("p");
-    outcomeParagraph.innerHTML = value.description;
+    // var outcomeParagraph = document.createElement("p");
+    // outcomeParagraph.innerHTML = value.description;
     optionAnchor.onclick = function() {
-        //waitForElement(selector).then(() => {
-            clearEventAndOptionText(textSelector);
-            var optionAnchorElement = document.getElementById("option" + optionIndex);
-            console.log(optionAnchorElement);
-            optionAnchorElement.appendChild(outcomeParagraph);
-            value.callback();
-        //});
+        clearEventAndOptionText(textSelector);
+        $(textSelector).html(value.description);
+        // var optionAnchorElement = document.getElementById("option" + optionIndex);
+        // console.log(optionAnchorElement);
+        // optionAnchorElement.appendChild(outcomeParagraph);
+        value.callback();
     };
 }
 
