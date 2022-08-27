@@ -32,7 +32,7 @@ Event object
 */
 var babyEvent1 = {
     description: "You spot a bottle containing some sort of white liquid.\n\n\
-        What do you do?\n\n",
+        What do you do?\n",
     options: new Map([
         ["Drink it", babyOutcome1_1],
         ["Taste it", babyOutcome1_2],
@@ -71,14 +71,10 @@ function waitForElement(selector) {
     });
 }
 
-function clearEventAndOptionText(textSelector, optionSelector) {
-    $(textSelector).html("");
-    $(optionSelector).html("");
-}
-
-function generateOutcome(textSelector, optionSelector, value, optionAnchor) {
+function generateOutcomeOnClick(textSelector, optionSelector, value, optionAnchor) {
     optionAnchor.onclick = function() {
-        clearEventAndOptionText(textSelector, optionSelector);
+        $(textSelector).html("");
+        $(optionSelector).html("");
         $(textSelector).html(value.description);
         value.callback();
     };
@@ -88,27 +84,23 @@ setup.getRandomEventNumber = function(eventArray) {
     return Math.floor(Math.random() * eventArray.length);
 }
 
-setup.generateEvent = function(textSelector, optionSelector, object) {
+setup.generateEvent = function(textSelector, optionSelector, eventObject) {
     var optionElements = new Array();
 
-    for (var [key, value] of object.options.entries()) {
+    for (var [key, value] of eventObject.options.entries()) {
         var optionAnchor = document.createElement("a");
-        optionAnchor.setAttribute("id", "option");
-        console.log(optionAnchor);
-
         var optionParagraph = document.createElement("p");
         var optionText = document.createTextNode(key);
-        
         optionParagraph.appendChild(optionText);
         optionAnchor.appendChild(optionParagraph);
 
-        generateOutcome(textSelector, optionSelector, value, optionAnchor);
+        generateOutcomeOnClick(textSelector, optionSelector, value, optionAnchor);
         
         optionElements.push(optionAnchor);
     }
 
     waitForElement(textSelector).then(() => {
-        $(textSelector).html(object.description);
+        $(textSelector).html(eventObject.description);
 
         var eventTextElement = $(optionSelector).get(0);
         for (var option of optionElements) {

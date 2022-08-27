@@ -24,8 +24,9 @@ Create Your Own Adult
 
 :: Birth {"position":"300,200"}
 Congratulations! You were born on <<print new Date()>>
-<<set $age = 0>>
+
 What is the first thing you do?
+<<set $age = 0>>
 
 [[Try to Walk|Gain Strength]]
 
@@ -35,24 +36,27 @@ What is the first thing you do?
 
 :: Gain Strength {"position":"100,400"}
 You become a little bit <span class="green">stronger</span>
-<<script>> setup.changeStrength(1); <</script>>
+
 [[Continue|Event]]
+<<script>> setup.changeStrength(1); <</script>>
 
 :: Gain Intelligence {"position":"300,400"}
 You become a little bit <span class="blue">smarter</span>
-<<script>> setup.changeIntelligence(1); <</script>>
+
 [[Continue|Event]]
+<<script>> setup.changeIntelligence(1); <</script>>
 
 :: Gain Charm {"position":"500,400"}
 You become a little bit more <span class="red">sociable</span>
-<<script>> setup.changeCharm(1); <</script>>
+
 [[Continue|Event]]
+<<script>> setup.changeCharm(1); <</script>>
 
 :: Event {"position":"300,600"}
 <p id="event-text"></p>
 <p id="event-options"></p>
+[[Continue|Event]]
 <<script>> 
   var eventNumber = setup.getRandomEventNumber(eventPool[state.active.variables.age]);
   setup.generateEvent("#event-text", "#event-options", eventPool[state.active.variables.age][eventNumber]); 
 <</script>>
-[[Continue|Event]]
