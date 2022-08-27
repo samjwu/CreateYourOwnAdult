@@ -71,6 +71,10 @@ function waitForElement(selector) {
     });
 }
 
+setup.getRandomEventNumber = function(eventArray) {
+    return Math.floor(Math.random() * eventArray.length);
+}
+
 setup.generateEvent = function(selector, object) {
     var optionElements = new Array();
 
