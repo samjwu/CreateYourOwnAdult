@@ -81,8 +81,6 @@ setup.generateEvent = function(selector, object) {
         optionParagraph.appendChild(optionText);
         optionAnchor.appendChild(optionParagraph);
 
-        console.log(value.description);
-
         var outcomeParagraph = document.createElement("p");
         outcomeParagraph.innerHTML = value.description;
         optionAnchor.onclick = function() {

@@ -12,7 +12,7 @@ CYOA
 :: StorySubtitle {"position":"400,0"}
 Create Your Own Adult
 
-:: StoryCaption
+:: StoryCaption {"position":"600,0"}
 <span class="yellow">Age:</span> <<print setup.getAgeString($age)>>
 <span class="green">Strength</span>: $strength
 <span class="blue">Intelligence</span>: $intelligence 
@@ -48,7 +48,7 @@ You become a little bit more <span class="red">sociable</span>
 <<script>> setup.changeCharm(1); <</script>>
 [[Continue|Event]]
 
-:: Event
+:: Event {"position":"300,600"}
 <p id="event-text">Event Text Goes Here</p>
 /* <p id="event-options">Event Options Go Here</p> */
 <<script>>setup.generateEvent("#event-text", eventPool[state.active.variables.age][0])<</script>>
