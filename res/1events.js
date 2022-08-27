@@ -71,41 +71,58 @@ function waitForElement(selector) {
     });
 }
 
-function clearEventText(selector) {
+function clearEventAndOptionText(selector) {
     $(selector).html("");
+    document.getElementById("option").style.pointerEvents = "none";
+    document.getElementById("option").style.cursor = "default";
+    
+    document.getElementById("option").remove();
+    console.log("removed");
+}
+
+function generateOutcome(textSelector, optionSelector, value, optionAnchor, optionIndex) {
+    var outcomeParagraph = document.createElement("p");
+    outcomeParagraph.innerHTML = value.description;
+    optionAnchor.onclick = function() {
+        //waitForElement(selector).then(() => {
+            clearEventAndOptionText(textSelector);
+            var optionAnchorElement = document.getElementById("option" + optionIndex);
+            console.log(optionAnchorElement);
+            optionAnchorElement.appendChild(outcomeParagraph);
+            value.callback();
+        //});
+    };
 }
 
 setup.getRandomEventNumber = function(eventArray) {
     return Math.floor(Math.random() * eventArray.length);
 }
 
-setup.generateEvent = function(selector, object) {
+setup.generateEvent = function(textSelector, optionSelector, object) {
     var optionElements = new Array();
+    var optionIndex = 0;
 
     for (var [key, value] of object.options.entries()) {
         var optionAnchor = document.createElement("a");
+        optionAnchor.setAttribute("id", "option");
+        console.log(optionAnchor);
+
         var optionParagraph = document.createElement("p");
         var optionText = document.createTextNode(key);
+        
         optionParagraph.appendChild(optionText);
         optionAnchor.appendChild(optionParagraph);
 
-        // generate outcome
-        var outcomeParagraph = document.createElement("p");
-        outcomeParagraph.innerHTML = value.description;
-        optionAnchor.onclick = function() {
-            clearEventText(selector);
-            var eventTextElement = document.getElementById("event-text");
-            eventTextElement.appendChild(outcomeParagraph);
-            value.callback();
-        };
-
+        generateOutcome(textSelector, optionSelector, value, optionAnchor, optionIndex);
+        
         optionElements.push(optionAnchor);
+        optionIndex += 1;
     }
 
-    waitForElement(selector).then(() => {
-        $(selector).html(object.description);
+    waitForElement(textSelector).then(() => {
+        $(textSelector).html(object.description);
 
-        var eventTextElement = document.getElementById("event-text");
+        var eventTextElement = document.getElementById("event-options");
         for (var option of optionElements) {
             eventTextElement.appendChild(option);
         }

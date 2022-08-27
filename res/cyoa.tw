@@ -49,10 +49,10 @@ You become a little bit more <span class="red">sociable</span>
 [[Continue|Event]]
 
 :: Event {"position":"300,600"}
-<p id="event-text">Event Text Goes Here</p>
-/* <p id="event-options">Event Options Go Here</p> */
+<p id="event-text"></p>
+<p id="event-options"></p>
 <<script>> 
   var eventNumber = setup.getRandomEventNumber(eventPool[state.active.variables.age]);
-  setup.generateEvent("#event-text", eventPool[state.active.variables.age][eventNumber]); 
+  setup.generateEvent("#event-text", "#event-options", eventPool[state.active.variables.age][eventNumber]); 
 <</script>>
 [[Continue|Event]]
