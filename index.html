@@ -231,24 +231,15 @@ function waitForElement(selector) {
     });
 }
 
-function clearEventAndOptionText(selector) {
-    $(selector).html("");
-    document.getElementById("option").style.pointerEvents = "none";
-    document.getElementById("option").style.cursor = "default";
-    
-    document.getElementById("option").remove();
-    console.log("removed");
+function clearEventAndOptionText(textSelector, optionSelector) {
+    $(textSelector).html("");
+    $(optionSelector).html("");
 }
 
-function generateOutcome(textSelector, optionSelector, value, optionAnchor, optionIndex) {
-    // var outcomeParagraph = document.createElement("p");
-    // outcomeParagraph.innerHTML = value.description;
+function generateOutcome(textSelector, optionSelector, value, optionAnchor) {
     optionAnchor.onclick = function() {
-        clearEventAndOptionText(textSelector);
+        clearEventAndOptionText(textSelector, optionSelector);
         $(textSelector).html(value.description);
-        // var optionAnchorElement = document.getElementById("option" + optionIndex);
-        // console.log(optionAnchorElement);
-        // optionAnchorElement.appendChild(outcomeParagraph);
         value.callback();
     };
 }
@@ -259,7 +250,6 @@ setup.getRandomEventNumber = function(eventArray) {
 
 setup.generateEvent = function(textSelector, optionSelector, object) {
     var optionElements = new Array();
-    var optionIndex = 0;
 
     for (var [key, value] of object.options.entries()) {
         var optionAnchor = document.createElement("a");
@@ -272,16 +262,15 @@ setup.generateEvent = function(textSelector, optionSelector, object) {
         optionParagraph.appendChild(optionText);
         optionAnchor.appendChild(optionParagraph);
 
-        generateOutcome(textSelector, optionSelector, value, optionAnchor, optionIndex);
+        generateOutcome(textSelector, optionSelector, value, optionAnchor);
         
         optionElements.push(optionAnchor);
-        optionIndex += 1;
     }
 
     waitForElement(textSelector).then(() => {
         $(textSelector).html(object.description);
 
-        var eventTextElement = document.getElementById("event-options");
+        var eventTextElement = $(optionSelector).get(0);
         for (var option of optionElements) {
             eventTextElement.appendChild(option);
         }
