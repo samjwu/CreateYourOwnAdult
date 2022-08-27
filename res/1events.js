@@ -71,6 +71,10 @@ function waitForElement(selector) {
     });
 }
 
+function clearEventText(selector) {
+    $(selector).html("");
+}
+
 setup.getRandomEventNumber = function(eventArray) {
     return Math.floor(Math.random() * eventArray.length);
 }
@@ -85,9 +89,11 @@ setup.generateEvent = function(selector, object) {
         optionParagraph.appendChild(optionText);
         optionAnchor.appendChild(optionParagraph);
 
+        // generate outcome
         var outcomeParagraph = document.createElement("p");
         outcomeParagraph.innerHTML = value.description;
         optionAnchor.onclick = function() {
+            clearEventText(selector);
             var eventTextElement = document.getElementById("event-text");
             eventTextElement.appendChild(outcomeParagraph);
             value.callback();
