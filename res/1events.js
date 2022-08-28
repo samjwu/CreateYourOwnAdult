@@ -20,7 +20,7 @@ var babyOutcome1_2 = {
 var babyOutcome1_3 = {
     description: "It turns out that white liquid was milk!\n \
         Good job!\n \
-        You <span class='red'>improved your social skills</span> a bit.\n \
+        You improved your <span class='red'>social</span> skills a bit.\n \
         Plus the milk makes your bones <span class='green'>stronger</span>.",
     callback: function() {setup.changeCoreStats(1, 0, 1)}
 };
@@ -55,7 +55,7 @@ var babyOutcome2_4 = {
 var babyOutcome3_1 = {
     description: "Your parents realize that they dropped a knife on the ground.\n \
         Good job pointing that out to them. Someone could have gotten hurt.\n \
-        You <span class='red'>improved your social skills</span> a bit.\n \
+        You improved your <span class='red'>social</span> skills a bit.\n \
         You also become a little bit <span class='blue'>smarter</span>.",
     callback: function() {setup.changeCoreStats(0, 1, 1)}
 };
@@ -95,6 +95,23 @@ var babyOutcome4_3 = {
         It's healthy and nutritious, but tasting it first was a good idea.\n \
         You become <span class='green'>stronger</span> and <span class='blue'>smarter</span>.",
     callback: function() {setup.changeCoreStats(1, 1, 0)}
+};
+
+var babyOutcome5_1 = {
+    description: "Um, ok.\n \
+        Not sure why you did that.\n \
+        You become much less <span class='red'>sociable</span>.",
+    callback: function() {setup.changeCoreStats(0, 0, -2)}
+};
+var babyOutcome5_2 = {
+    description: "The other baby smiles and waves back at you.\n \
+        You become a little more <span class='red'>sociable</span>.",
+    callback: function() {setup.changeCoreStats(0, 0, 1)}
+};
+var babyOutcome5_3 = {
+    description: "You and the other baby play together.\n \
+        You become much more <span class='red'>sociable</span>.",
+    callback: function() {setup.changeCoreStats(0, 0, 2)}
 };
 
 /*
@@ -140,7 +157,16 @@ var babyEvent4 = {
         ["Taste it", babyOutcome4_3]
     ])
 };
-var babyEvents = new Array(babyEvent1, babyEvent2, babyEvent3, babyEvent4);
+var babyEvent5 = {
+    description: "You see another baby in your room.\n\n\
+        What do you do?\n",
+    options: new Map([
+        ["Punch it", babyOutcome5_1],
+        ["Wave to it", babyOutcome5_2],
+        ["Share your toys with it", babyOutcome5_3]
+    ])
+};
+var babyEvents = new Array(babyEvent1, babyEvent2, babyEvent3, babyEvent4, babyEvent5);
 
 var childEvents = new Array();
 
