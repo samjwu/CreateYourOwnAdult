@@ -78,6 +78,25 @@ var babyOutcome3_4 = {
     callback: function() {setup.changeCoreStats(-2, 0, 0)}
 };
 
+var babyOutcome4_1 = {
+    description: "It turns out that mush was mashed broccoli!\n \
+        It's healthy and nutritious.\n \
+        You become much <span class='green'>stronger</span>.",
+    callback: function() {setup.changeCoreStats(2, 0, 0)}
+};
+var babyOutcome4_2 = {
+    description: "Your parents tell you that was mashed broccoli.\n \
+        You were supposed to eat it.\n \
+        Your temper tantrum makes you a little less <span class='red'>sociable</span>.",
+    callback: function() {setup.changeCoreStats(0, 0, -1)}
+};
+var babyOutcome4_3 = {
+    description: "It turns out that mush was mashed broccoli!\n \
+        It's healthy and nutritious, but tasting it first was a good idea.\n \
+        You become <span class='green'>stronger</span> and <span class='blue'>smarter</span>.",
+    callback: function() {setup.changeCoreStats(1, 1, 0)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -112,7 +131,16 @@ var babyEvent3 = {
         ["Play with it", babyOutcome3_4]
     ])
 };
-var babyEvents = new Array(babyEvent1, babyEvent2, babyEvent3);
+var babyEvent4 = {
+    description: "Your parents place a stinky, sticky, green mush in front of you.\n\n\
+        What do you do?\n",
+    options: new Map([
+        ["Eat it", babyOutcome4_1],
+        ["Throw it away", babyOutcome4_2],
+        ["Taste it", babyOutcome4_3]
+    ])
+};
+var babyEvents = new Array(babyEvent1, babyEvent2, babyEvent3, babyEvent4);
 
 var childEvents = new Array();
 
