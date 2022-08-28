@@ -202,14 +202,40 @@ var babyOutcome2_2 = {
 var babyOutcome2_3 = {
     description: "Your parents later say that was a tide pod.\n \
         Good thing you were smart enough not to do anything stupid, like put it in your mouth.\n \
-        You become slightly <span class='blue'>smarter</span>.",
-    callback: function() {setup.changeCoreStats(0, 1, 0)}
+        You become much <span class='blue'>smarter</span>.",
+    callback: function() {setup.changeCoreStats(0, 2, 0)}
 };
 var babyOutcome2_4 = {
     description: "Your parents later say that was a tide pod.\n \
         Good thing you were smart enough not to do anything stupid, like put it in your mouth.\n \
         Still, it's not a good idea to go around touching random objects.",
     callback: function() {setup.changeCoreStats(0, 1, 0)}
+};
+
+var babyOutcome3_1 = {
+    description: "Your parents realize that they dropped a knife on the ground.\n \
+        Good job pointing that out to them. Someone could have gotten hurt.\n \
+        You <span class='red'>improved your social skills</span> a bit.\n \
+        You also become a little bit <span class='blue'>smarter</span>.",
+    callback: function() {setup.changeCoreStats(0, 1, 1)}
+};
+var babyOutcome3_2 = {
+    description: "It turns out that was a knife and you cut your mouth. Ouch!\n \
+        Why did you do that?\n \
+        The injury makes you much <span class='green'>weaker</span>.",
+    callback: function() {setup.changeCoreStats(-2, 0, 0)}
+};
+var babyOutcome3_3 = {
+    description: "Your parents later say that was a knife.\n \
+        Good thing you were smart enough not to do anything stupid, like put it in your mouth.\n \
+        You become slightly <span class='blue'>smarter</span>.",
+    callback: function() {setup.changeCoreStats(0, 1, 0)}
+};
+var babyOutcome3_4 = {
+    description: "It turns out that was a knife and you cut your hands. Ouch!\n \
+        Why did you do that?\n \
+        The injury makes you much <span class='green'>weaker</span>.",
+    callback: function() {setup.changeCoreStats(-2, 0, 0)}
 };
 
 /*
@@ -236,7 +262,17 @@ var babyEvent2 = {
         ["Play with it", babyOutcome2_4]
     ])
 };
-var babyEvents = new Array(babyEvent1, babyEvent2);
+var babyEvent3 = {
+    description: "Something shiny and flat fell onto the ground.\n\n\
+        What do you do?\n",
+    options: new Map([
+        ["Point it out to your parents", babyOutcome3_1],
+        ["Put it in your mouth", babyOutcome3_2],
+        ["Leave it alone", babyOutcome3_3],
+        ["Play with it", babyOutcome3_4]
+    ])
+};
+var babyEvents = new Array(babyEvent1, babyEvent2, babyEvent3);
 
 var childEvents = new Array();
 
