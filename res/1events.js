@@ -114,6 +114,25 @@ var babyOutcome5_3 = {
     callback: function() {setup.changeCoreStats(0, 0, 2)}
 };
 
+var childOutcome1_1 = {
+    description: "You are fearless!\n \
+        Riding a bike doesn't scare you!\n \
+        You fall off a few times, but that just makes you <span class='green'>tougher</span>.",
+    callback: function() {setup.changeCoreStats(1, 0, 0)}
+};
+var childOutcome1_2 = {
+    description: "You are clever.\n \
+        Better to learn from someone else's mistakes instead of making your own.\n \
+        This experience has made you <span class='blue'>smarter</span>.",
+    callback: function() {setup.changeCoreStats(0, 1, 0)}
+};
+var childOutcome1_3 = {
+    description: "You know when to ask for help.\n \
+        Cooperation can get you far in life.\n \
+        This experience makes you a little more <span class='red'>sociable</span>.",
+    callback: function() {setup.changeCoreStats(0, 0, 1)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -168,7 +187,16 @@ var babyEvent5 = {
 };
 var babyEvents = new Array(babyEvent1, babyEvent2, babyEvent3, babyEvent4, babyEvent5);
 
-var childEvents = new Array();
+var childEvent1 = {
+    description: "Your parents bought you a bicycle.\n\n\
+        What do you do with it?\n",
+    options: new Map([
+        ["Jump on and try to ride it", childOutcome1_1],
+        ["Watch how other kids ride their bikes first", childOutcome1_2],
+        ["Ask your parents to help you ride it", childOutcome1_3]
+    ])
+};
+var childEvents = new Array(childEvent1);
 
 var teenEvents = new Array();
 
@@ -204,6 +232,10 @@ function generateOutcomeOnClick(textSelector, optionSelector, value, optionAncho
         $(optionSelector).html("");
         $(textSelector).html(value.description);
         value.callback();
+        state.active.variables.actionsPerformed += 1;
+        if (state.active.variables.actionsPerformed >= 3) {
+            state.active.variables.age += 1;
+        }
     };
 }
 

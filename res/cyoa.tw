@@ -26,13 +26,14 @@ Create Your Own Adult
 Congratulations! You were born on <<print new Date()>>
 
 What is the first thing you do?
-<<set $age = 0>>
 
 [[Try to Walk|Gain Strength]]
 
 [[Play with your Toys|Gain Intelligence]]
 
 [[Try to Talk|Gain Charm]]
+<<set $age = 0>>
+<<set $actionsPerformed = 0>>
 
 :: Gain Strength {"position":"100,400"}
 You become a little bit <span class="green">stronger</span>
