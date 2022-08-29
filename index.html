@@ -394,6 +394,7 @@ function generateOutcomeOnClick(textSelector, optionSelector, value, optionAncho
         value.callback();
         state.active.variables.actionsPerformed += 1;
         if (state.active.variables.actionsPerformed >= 3) {
+            state.active.variables.actionsPerformed = 0;
             state.active.variables.age += 1;
         }
     };
