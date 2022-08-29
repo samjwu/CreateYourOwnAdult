@@ -133,6 +133,26 @@ var childOutcome1_3 = {
     callback: function() {setup.changeCoreStats(0, 0, 1)}
 };
 
+var childOutcome2_1 = {
+    description: "You accept the dare and start dancing halfway though math class.\n \
+        You get sent to the principal's office.\n \
+        You miss some lessons due to detention and get a bit <span class='blue'>dumber</span>, \
+        but at least your friends <span class='red'>like</span> you more.",
+    callback: function() {setup.changeCoreStats(0, -1, 2)}
+};
+var childOutcome2_2 = {
+    description: "You refuse the dare and pay attention in math class.\n \
+        You become <span class='blue'>smarter</span> because you listen in class, \
+        but at your friends <span class='red'>lose</span> some respect for you.",
+    callback: function() {setup.changeCoreStats(0, 2, -1)}
+};
+var childOutcome2_3 = {
+    description: "You distract your friends by suddenly doing your best impersonation of a monkey.\n \
+        Your friends laugh at your antics and forget all about the dare.\n \
+        They <span class='red'>like</span> you a bit more.",
+    callback: function() {setup.changeCoreStats(0, 0, 1)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -196,7 +216,16 @@ var childEvent1 = {
         ["Ask your parents to help you ride it", childOutcome1_3]
     ])
 };
-var childEvents = new Array(childEvent1);
+var childEvent2 = {
+    description: "Your friends dare you to start dancing in the middle of class.\n\n\
+        What do you do?\n",
+    options: new Map([
+        ["Accept the dare", childOutcome2_1],
+        ["Refuse the dare", childOutcome2_2],
+        ["Suggest doing something else", childOutcome2_3]
+    ])
+};
+var childEvents = new Array(childEvent1, childEvent2);
 
 var teenEvents = new Array();
 
