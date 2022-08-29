@@ -239,6 +239,8 @@ function generateOutcomeOnClick(textSelector, optionSelector, value, optionAncho
             state.active.variables.actionsPerformed = 0;
             seenEvents.clear();
             state.active.variables.age += 1;
+            $(optionSelector).html("Congratulations! You have grown older and become a <span class='yellow'>" 
+            + setup.getAgeString(state.active.variables.age)) + "</span>";
         }
     };
 }
