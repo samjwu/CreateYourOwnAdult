@@ -206,6 +206,8 @@ var seniorEvents = new Array();
 
 window.eventPool = new Array(babyEvents, childEvents, teenEvents, adultEvents, seniorEvents);
 
+window.seenEvents = new Set();
+
 function waitForElement(selector) {
     return new Promise(resolve => {
         if (document.querySelector(selector)) {
@@ -235,6 +237,7 @@ function generateOutcomeOnClick(textSelector, optionSelector, value, optionAncho
         state.active.variables.actionsPerformed += 1;
         if (state.active.variables.actionsPerformed >= 3) {
             state.active.variables.actionsPerformed = 0;
+            seenEvents.clear();
             state.active.variables.age += 1;
         }
     };

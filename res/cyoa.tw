@@ -57,7 +57,11 @@ You become a little bit more <span class="red">sociable</span>
 <p id="event-text"></p>
 <p id="event-options"></p>
 [[Continue|Event]]
-<<script>> 
+<<script>>
   var eventNumber = setup.getRandomEventNumber(eventPool[state.active.variables.age]);
-  setup.generateEvent("#event-text", "#event-options", eventPool[state.active.variables.age][eventNumber]); 
+  while (seenEvents.has(eventNumber)) {
+    eventNumber = setup.getRandomEventNumber(eventPool[state.active.variables.age]);
+  }
+  setup.generateEvent("#event-text", "#event-options", eventPool[state.active.variables.age][eventNumber]);
+  seenEvents.add(eventNumber);
 <</script>>
