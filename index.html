@@ -340,6 +340,32 @@ var childOutcome3_4 = {
     callback: function() {setup.changeCoreStats(-1, 2, 2)}
 };
 
+var childOutcome4_1 = {
+    description: "You decide that you want to be a sports star.\n \
+        Now that you have a goal, you focus on being more <span class='green'>fit</span>.",
+    callback: function() {setup.changeCoreStats(1, 0, 0)}
+};
+var childOutcome4_2 = {
+    description: "You decide that you want to be a lawyer.\n \
+        Now that you have a goal, you focus on being more <span class='blue'>intelligent</span>.",
+    callback: function() {setup.changeCoreStats(0, 1, 0)}
+};
+var childOutcome4_3 = {
+    description: "You decide that you want to be a doctor.\n \
+        Now that you have a goal, you focus on being more <span class='green'>intelligent</span>.",
+    callback: function() {setup.changeCoreStats(0, 1, 0)}
+};
+var childOutcome4_4 = {
+    description: "You decide that you want to be a movie star.\n \
+        Now that you have a goal, you focus on being more <span class='red'>charismatic</span>.",
+    callback: function() {setup.changeCoreStats(0, 0, 1)}
+};
+var childOutcome4_5 = {
+    description: "You decide that you want to be a software developer.\n \
+        Given your goal, you are clearly a very <span class='blue'>intelligent</span> child.",
+    callback: function() {setup.changeCoreStats(0, 3, 0)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -422,7 +448,18 @@ var childEvent3 = {
         ["Insult the bully", childOutcome3_4]
     ])
 };
-var childEvents = new Array(childEvent1, childEvent2, childEvent3);
+var childEvent4 = {
+    description: "Your teacher asks the students in your class a question about their futures.\n\n\
+        What do you want to be when you grow up?\n",
+    options: new Map([
+        ["A sports star", childOutcome4_1],
+        ["A lawyer", childOutcome4_2],
+        ["A doctor", childOutcome4_3],
+        ["A movie star", childOutcome4_4],
+        ["A software developer", childOutcome4_5]
+    ])
+};
+var childEvents = new Array(childEvent1, childEvent2, childEvent3, childEvent4);
 
 var teenEvents = new Array();
 
