@@ -206,6 +206,29 @@ var childOutcome4_5 = {
     callback: function() {setup.changeCoreStats(0, 3, 0)}
 };
 
+var childOutcome5_1 = {
+    description: "You dress up as a super hero!\n \
+        Your choice of costume reflects your desire to be <span class='green'>stronger</span>.",
+    callback: function() {setup.changeCoreStats(1, 0, 0)}
+};
+var childOutcome5_2 = {
+    description: "You dress up as a robot!\n \
+        Your choice of costume reflects your desire to be <span class='blue'>smarter</span>.",
+    callback: function() {setup.changeCoreStats(0, 1, 0)}
+};
+var childOutcome5_3 = {
+    description: "You dress up as a celebrity!\n \
+        Your choice of costume reflects your desire to be <span class='red'>sociable</span>.",
+    callback: function() {setup.changeCoreStats(0, 0, 1)}
+};
+var childOutcome5_4 = {
+    description: "You dress up as a blob!\n \
+        Wait, what? A blob? Really?\n \
+        Ok, your choice of costume reflects your lack of imagination...\n \
+        You get nothing.",
+    callback: function() {setup.changeCoreStats(0, 0, 0)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -297,6 +320,16 @@ var childEvent4 = {
         ["A doctor", childOutcome4_3],
         ["A movie star", childOutcome4_4],
         ["A software developer", childOutcome4_5]
+    ])
+};
+var childEvent4 = {
+    description: "It's Halloween!.\n\n\
+        What is your costume?\n",
+    options: new Map([
+        ["A super hero", childOutcome5_1],
+        ["A robot", childOutcome5_2],
+        ["A celebrity", childOutcome5_3],
+        ["A blob", childOutcome5_4]
     ])
 };
 var childEvents = new Array(childEvent1, childEvent2, childEvent3, childEvent4);
