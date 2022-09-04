@@ -153,6 +153,33 @@ var childOutcome2_3 = {
     callback: function() {setup.changeCoreStats(0, 0, 1)}
 };
 
+var childOutcome3_1 = {
+    description: "Nobody messes with you. \n \
+        You punch the bully and take back your lunch money.\n \
+        Other kids hear about what you did and you gain a reputation for being <span class='green'>tough</span>.",
+    callback: function() {setup.changeCoreStats(1, 0, 0)}
+};
+var childOutcome3_2 = {
+    description: "You wisely tattle on the bully.\n \
+        The bully's parents force him to return your money and harshly punish him.\n \
+        Your actions were <span class='blue'>clever</span>, but you lose some reputation because kids <span class='red'>dislike</span> tattletales.",
+    callback: function() {setup.changeCoreStats(0, 1, -1)}
+};
+var childOutcome3_3 = {
+    description: "You try to take the high road, and attempt to reason with the bully.\n \
+        This is admirable, but inadvisable. The bully just punches you again and walks away.\n \
+        At least other people think what you did was <span class='blue'>mature</span> and <span class='red'>respect</span> you a bit more.",
+    callback: function() {setup.changeCoreStats(0, 1, 1)}
+};
+var childOutcome3_4 = {
+    description: "You laugh and thank the bully for having the decency to provide you with medicine to heal the bruise he caused.\n \
+        When the bully stares at you blankly, you quote the idiom 'Laughter is the best medicine'.\n \
+        Unfortunately for you, this bully is just smart enough to understand that you insulted him, and punches you again in retaliation.\n \
+        Your face hurts for a long time after, and you feel <span class='green'>weaker</span>.\n \
+        However, your peers find your insult <span class='red'>funny</span> and congratulate you for your <span class='blue'>wit</span>.",
+    callback: function() {setup.changeCoreStats(-1, 2, 2)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -225,7 +252,17 @@ var childEvent2 = {
         ["Suggest doing something else", childOutcome2_3]
     ])
 };
-var childEvents = new Array(childEvent1, childEvent2);
+var childEvent3 = {
+    description: "The local bully punches you and takes your lunch money.\n\n\
+        What do you do?\n",
+    options: new Map([
+        ["Beat the bully up", childOutcome3_1],
+        ["Tell the bully's parents what happened", childOutcome3_2],
+        ["Try to reason with the bully", childOutcome3_3],
+        ["Insult the bully", childOutcome3_4]
+    ])
+};
+var childEvents = new Array(childEvent1, childEvent2, childEvent3);
 
 var teenEvents = new Array();
 
