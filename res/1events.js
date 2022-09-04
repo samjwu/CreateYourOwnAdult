@@ -224,9 +224,39 @@ var childOutcome5_3 = {
 var childOutcome5_4 = {
     description: "You dress up as a blob!\n \
         Wait, what? A blob? Really?\n \
-        Ok, your choice of costume reflects your lack of imagination...\n \
-        You get nothing.",
-    callback: function() {setup.changeCoreStats(0, 0, 0)}
+        Ok, your choice of costume reflects your lack of <span class='blue'>imagination</span>.",
+    callback: function() {setup.changeCoreStats(0, -1, 0)}
+};
+
+var teenOutcome1_1 = {
+    description: "You take a small sip of the alcohol.\n \
+        Bad idea.\n \
+        No one is impressed, and you lose a few <span class='blue'>brain</span> cells.",
+    callback: function() {setup.changeCoreStats(0, -1, 0)}
+};
+var teenOutcome1_2 = {
+    description: "You take a big drink from the alcohol bottle.\n \
+        Terrible idea.\n \
+        Some of the other kids are impressed, but you lose some <span class='blue'>brain</span> cells.",
+    callback: function() {setup.changeCoreStats(0, -2, 1)}
+};
+var teenOutcome1_3 = {
+    description: "You grab the bottle and drink it all down.\n \
+        That was the worst thing you could have done.\n \
+        The other kids are <span class='red'>annoyed</span> at you for drinking it all and you lose a lot of <span class='blue'>brain</span> cells.",
+    callback: function() {setup.changeCoreStats(0, -3, -1)}
+};
+var teenOutcome1_4 = {
+    description: "You offer and excuse and politely decline the bottle.\n \
+        Good choice.\n \
+        The other kids are <span class='red'>respect</span> your decision and your choice demonstrates your <span class='blue'>wisdom</span>.",
+    callback: function() {setup.changeCoreStats(0, 1, 1)}
+};
+var teenOutcome1_5 = {
+    description: "You refuse to drink the alcohol.\n \
+        The other kids shrug and continue passing the bottle.\n \
+        Your good decision makes you a bit <span class='blue'>smarter</span>.",
+    callback: function() {setup.changeCoreStats(0, 1, 0)}
 };
 
 /*
@@ -322,7 +352,7 @@ var childEvent4 = {
         ["A software developer", childOutcome4_5]
     ])
 };
-var childEvent4 = {
+var childEvent5 = {
     description: "It's Halloween!.\n\n\
         What is your costume?\n",
     options: new Map([
@@ -332,9 +362,21 @@ var childEvent4 = {
         ["A blob", childOutcome5_4]
     ])
 };
-var childEvents = new Array(childEvent1, childEvent2, childEvent3, childEvent4);
+var childEvents = new Array(childEvent1, childEvent2, childEvent3, childEvent4, childEvent5);
 
-var teenEvents = new Array();
+var teenEvent1 = {
+    description: "Some of your less reputable classmates have obtained a bottle of alcohol.\n\n\
+        They pass the bottle to you and tell you to take a swig.\n\n\
+        What do you do?\n",
+    options: new Map([
+        ["Sip it", teenOutcome1_1],
+        ["Take a drink", teenOutcome1_2],
+        ["Chug it", teenOutcome1_3],
+        ["Politely decline", teenOutcome1_4],
+        ["Refuse", teenOutcome1_5]
+    ])
+};
+var teenEvents = new Array(teenEvent1);
 
 var adultEvents = new Array();
 
