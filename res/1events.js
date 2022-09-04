@@ -259,6 +259,22 @@ var teenOutcome1_5 = {
     callback: function() {setup.changeCoreStats(0, 1, 0)}
 };
 
+var teenOutcome2_1 = {
+    description: "You are a brainless jock! Just kidding.\n \
+        Your choice to join a sports club makes you <span class='green'>stronger</span>.",
+    callback: function() {setup.changeCoreStats(1, 0, 0)}
+};
+var teenOutcome2_2 = {
+    description: "You are nerd! Just kidding. Not really.\n \
+        Your choice to join an intellectual club makes you, well, more <span class='blue'>intelligent</span>.",
+    callback: function() {setup.changeCoreStats(0, 1, 0)}
+};
+var teenOutcome2_3 = {
+    description: "You are socialite!\n \
+        Your choice of club makes you more <span class='red'>social</span>.",
+    callback: function() {setup.changeCoreStats(0, 0, 1)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -376,7 +392,22 @@ var teenEvent1 = {
         ["Refuse", teenOutcome1_5]
     ])
 };
-var teenEvents = new Array(teenEvent1);
+var teenEvent1 = {
+    description: "It's freshman year and clubs are recruiting!\n\n\
+        Which club do you want to join?\n",
+    options: new Map([
+        ["Soccer", teenOutcome2_1],
+        ["Basketball", teenOutcome2_1],
+        ["Football", teenOutcome2_1],
+        ["Chess", teenOutcome2_2],
+        ["Math", teenOutcome2_2],
+        ["Debate", teenOutcome2_2],
+        ["Drama", teenOutcome2_3],
+        ["Dance", teenOutcome2_3],
+        ["Music", teenOutcome2_3]
+    ])
+};
+var teenEvents = new Array(teenEvent1, teenEvent2);
 
 var adultEvents = new Array();
 
