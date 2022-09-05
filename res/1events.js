@@ -376,6 +376,12 @@ var adultOutcome2_3 = {
     callback: function() {setup.changeCoreStats(0, 0, 1)}
 };
 
+var adultOutcome3_1 = {
+    description: "Congratulations! You can now handle adult chores.\n \
+        Naturally, you get no bonus for doing something that is already expected of you.",
+    callback: function() {setup.changeCoreStats(0, 0, 0)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -559,7 +565,17 @@ var adultEvent2 = {
         ["Pink collar", adultOutcome2_3],
     ])
 };
-var adultEvents = new Array(adultEvent1, adultEvent2);
+var adultEvent3 = {
+    description: "Another part of adulting: handling tasks on your own.\n\n\
+        What do you do?\n",
+    options: new Map([
+        ["Get your car fixed", adultOutcome3_1],
+        ["Pay your bills", adultOutcome3_1],
+        ["Manage your budget", adultOutcome3_1],
+        ["Fix up your home", adultOutcome3_1]
+    ])
+};
+var adultEvents = new Array(adultEvent1, adultEvent2, adultEvent3);
 
 var seniorEvents = new Array();
 
