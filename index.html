@@ -552,6 +552,30 @@ var adultOutcome4_2 = {
     callback: function() {setup.changeCoreStats(-1, -1, 0)}
 };
 
+var adultOutcome5_1 = {
+    description: "Do you even lift, bro?\n \
+        Yes. You do.\n \
+        You become a bit <span class='green'>weaker</span> due to your injury, but you get some <span class='red'>cred</span> for lifting.",
+    callback: function() {setup.changeCoreStats(-1, 0, 1)}
+};
+var adultOutcome5_2 = {
+    description: "Do you even lift, bro?\n \
+        No. You do not. Boxes don't count.\n \
+        You become a bit <span class='green'>weaker</span> due to your injury and you gain no cred for lifting boxes.",
+    callback: function() {setup.changeCoreStats(-1, 0, 0)}
+};
+var adultOutcome5_3 = {
+    description: "You got hurt while running. That's too bad.\n \
+        You become a bit <span class='green'>weaker</span> due to your injury, but at least it was because you were <span class='blue'>smart</span> enough to exercise.",
+    callback: function() {setup.changeCoreStats(-1, 1, 0)}
+};
+var adultOutcome5_4 = {
+    description: "A bar fight?\n \
+        That's a pretty <span class='blue'>dumb</span> reason for getting hurt.\n \
+        You become a bit <span class='green'>weaker</span> due to your injury.",
+    callback: function() {setup.changeCoreStats(-1, -1, 0)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -755,7 +779,17 @@ var adultEvent4 = {
         ["Go for a ride", adultOutcome4_1],
         ["Drink some alcohol", adultOutcome4_2],
         ["Eat some junk food", adultOutcome4_2],
-        ["Take some aspirin", adultOutcome4_2],
+        ["Take some aspirin", adultOutcome4_2]
+    ])
+};
+var adultEvent4 = {
+    description: "Uh oh! You just got injured!\n\n\
+        What were you doing?\n",
+    options: new Map([
+        ["Lifting weights", adultOutcome5_1],
+        ["Lifting boxes", adultOutcome5_2],
+        ["Running", adultOutcome5_3],
+        ["Bar fight", adultOutcome5_4],
     ])
 };
 var adultEvents = new Array(adultEvent1, adultEvent2, adultEvent3, adultEvent4);
