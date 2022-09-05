@@ -542,6 +542,16 @@ var adultOutcome3_1 = {
     callback: function() {setup.changeCoreStats(0, 0, 0)}
 };
 
+var adultOutcome4_1 = {
+    description: "You feel a little better.",
+    callback: function() {setup.changeCoreStats(0, 0, 0)}
+};
+var adultOutcome4_2 = {
+    description: "Bad idea. Try not to abuse your body when you're feeling down.\n \
+        You feel a little weaker in <span class='blue'>mind</span> and <span class='green'>body</span>.",
+    callback: function() {setup.changeCoreStats(-1, -1, 0)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -735,7 +745,20 @@ var adultEvent3 = {
         ["Fix up your home", adultOutcome3_1]
     ])
 };
-var adultEvents = new Array(adultEvent1, adultEvent2, adultEvent3);
+var adultEvent4 = {
+    description: "You just had a bad day.\n\n\
+        You're taking one down.\n\n\
+        What do you do to turn it around?\n",
+    options: new Map([
+        ["Sing a sad song", adultOutcome4_1],
+        ["Work at a smile", adultOutcome4_1],
+        ["Go for a ride", adultOutcome4_1],
+        ["Drink some alcohol", adultOutcome4_2],
+        ["Eat some junk food", adultOutcome4_2],
+        ["Take some aspirin", adultOutcome4_2],
+    ])
+};
+var adultEvents = new Array(adultEvent1, adultEvent2, adultEvent3, adultEvent4);
 
 var seniorEvents = new Array();
 
