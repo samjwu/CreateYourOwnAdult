@@ -337,6 +337,29 @@ var teenOutcome5_3 = {
     callback: function() {setup.changeCoreStats(0, 0, 1)}
 };
 
+var adultOutcome1_1 = {
+    description: "You suck it up and get your taxes done.\n \
+        Twas the terrifying taxing task to... do, but you do get a bonus to your <span class='green'>strength</span> and <span class='blue'>intelligence</span> for your mental fortitude.",
+    callback: function() {setup.changeCoreStats(1, 1, 0)}
+};
+var adultOutcome1_2 = {
+    description: "Taxes? Just get someone else to handle that.\n \
+        You hire an accountant to help you with your taxes. <span class='blue'>Smart</span> move.",
+    callback: function() {setup.changeCoreStats(0, 1, 0)}
+};
+var adultOutcome1_3 = {
+    description: "Didn't you already learn from your mistakes in high school? No?\n \
+        Well, the consequences of procrastination are a bit more taxing this time.\n \
+        You lose some <span class='red'>reputation</span> since you forgot to file your taxes.",
+    callback: function() {setup.changeCoreStats(0, 0, -1)}
+};
+var adultOutcome1_4 = {
+    description: "You decided to not file your taxes.\n \
+        Bad move.\n \
+        Your <span class='blue'>foolish</span> decision costs you some <span class='red'>reputation</span>.",
+    callback: function() {setup.changeCoreStats(0, -1, -1)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -500,7 +523,18 @@ var teenEvent5 = {
 };
 var teenEvents = new Array(teenEvent1, teenEvent2, teenEvent3, teenEvent4, teenEvent5);
 
-var adultEvents = new Array();
+var adultEvent1 = {
+    description: "It's time for the best part of being an adult.\n\n\
+        Doing your taxes!\n\n\
+        How do you handle this?\n",
+    options: new Map([
+        ["Tough it out and just do it", adultOutcome1_1],
+        ["Get an accountant to do it for you", adultOutcome1_2],
+        ["I'll do it later", adultOutcome1_3],
+        ["Nope", adultOutcome1_4]
+    ])
+};
+var adultEvents = new Array(adultEvent1);
 
 var seniorEvents = new Array();
 
