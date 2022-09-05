@@ -360,6 +360,22 @@ var adultOutcome1_4 = {
     callback: function() {setup.changeCoreStats(0, -1, -1)}
 };
 
+var adultOutcome2_1 = {
+    description: "You get a job in the blue collar industry.\n \
+        You get a bonus to your <span class='green'>strength</span>.",
+    callback: function() {setup.changeCoreStats(1, 0, 0)}
+};
+var adultOutcome2_2 = {
+    description: "You get a job in the white collar industry.\n \
+        You get a bonus to your <span class='blue'>intelligence</span>.",
+    callback: function() {setup.changeCoreStats(0, 1, 0)}
+};
+var adultOutcome2_3 = {
+    description: "You get a job in the pink collar industry.\n \
+        You get a bonus to your <span class='red'>charm</span>.",
+    callback: function() {setup.changeCoreStats(0, 0, 1)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -534,7 +550,16 @@ var adultEvent1 = {
         ["Nope", adultOutcome1_4]
     ])
 };
-var adultEvents = new Array(adultEvent1);
+var adultEvent2 = {
+    description: "Time to find a job!\n\n\
+        Which industry do you go for?\n",
+    options: new Map([
+        ["Blue collar", adultOutcome2_1],
+        ["White collar", adultOutcome2_2],
+        ["Pink collar", adultOutcome2_3],
+    ])
+};
+var adultEvents = new Array(adultEvent1, adultEvent2);
 
 var seniorEvents = new Array();
 
