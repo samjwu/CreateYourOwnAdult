@@ -1,4 +1,4 @@
-.PHONY: build dev chapter1
+.PHONY: build dev
 
 build:
 	tweego -o index.html res
