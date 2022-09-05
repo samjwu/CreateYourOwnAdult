@@ -292,6 +292,35 @@ var teenOutcome3_3 = {
     callback: function() {setup.changeCoreStats(0, 0, 1)}
 };
 
+var teenOutcome4_1 = {
+    description: "You decide to work out in your free time.\n \
+        Due to your training, you get <span class='green'>stronger</span>.",
+    callback: function() {setup.changeCoreStats(1, 0, 0)}
+};
+var teenOutcome4_2 = {
+    description: "You decide to play video games in your free time.\n \
+        Contrary to what some people may claim, playing games is not a good way to improve the mind-muscle connection.\n \
+        You become slightly <span class='green'>weaker</span> due to your sedentary lifestyle.",
+    callback: function() {setup.changeCoreStats(-1, 0, 0)}
+};
+var teenOutcome4_3 = {
+    description: "You decide to watch TV.\n \
+        Despite what your parents may have said, watching TV won't literally rot your brain.\n \
+        Except in this game. In this game, watching TV rots your brain.\n \
+        You become significantly <span class='blue'>dumber</span>.",
+    callback: function() {setup.changeCoreStats(0, -2, 0)}
+};
+var teenOutcome4_4 = {
+    description: "You decide to study in your free time.\n \
+        Due to your effort, you become <span class='blue'>smarter</span>.",
+    callback: function() {setup.changeCoreStats(0, 1, 0)}
+};
+var teenOutcome4_5 = {
+    description: "You decide to hang out with your friends in your free time.\n \
+        Your <span class='red'>social</span> skills improve.",
+    callback: function() {setup.changeCoreStats(0, 0, 1)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -433,7 +462,18 @@ var teenEvent3 = {
         ["Psychology", teenOutcome3_3],
     ])
 };
-var teenEvents = new Array(teenEvent1, teenEvent2, teenEvent3);
+var teenEvent4 = {
+    description: "You have more free time now and have to pick a pastime.\n\n\
+        What do you do?\n",
+    options: new Map([
+        ["Work out", teenOutcome4_1],
+        ["Play games", teenOutcome4_2],
+        ["Watch TV", teenOutcome4_3],
+        ["Study", teenOutcome4_4],
+        ["Hang out with friends", teenOutcome4_5],
+    ])
+};
+var teenEvents = new Array(teenEvent1, teenEvent2, teenEvent3, teenEvent4);
 
 var adultEvents = new Array();
 
