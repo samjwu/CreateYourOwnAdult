@@ -321,6 +321,22 @@ var teenOutcome4_5 = {
     callback: function() {setup.changeCoreStats(0, 0, 1)}
 };
 
+var teenOutcome5_1 = {
+    description: "You decide to go swimming.\n \
+        With regular exercise, you get <span class='green'>stronger</span>.",
+    callback: function() {setup.changeCoreStats(1, 0, 0)}
+};
+var teenOutcome5_2 = {
+    description: "You decide to get a summer job.\n \
+        It's not much fun, but your parents commend you for your <span class='blue'>wise</span> use of time.",
+    callback: function() {setup.changeCoreStats(0, 1, 0)}
+};
+var teenOutcome5_3 = {
+    description: "You decide to go camping with some friends.\n \
+        Your <span class='red'>social</span> skills improve.",
+    callback: function() {setup.changeCoreStats(0, 0, 1)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -473,7 +489,16 @@ var teenEvent4 = {
         ["Hang out with friends", teenOutcome4_5],
     ])
 };
-var teenEvents = new Array(teenEvent1, teenEvent2, teenEvent3, teenEvent4);
+var teenEvent5 = {
+    description: "It's summer vacation!\n\n\
+        What do you do?\n",
+    options: new Map([
+        ["Go swim", teenOutcome5_1],
+        ["Get a job", teenOutcome5_2],
+        ["Go camping", teenOutcome5_3],
+    ])
+};
+var teenEvents = new Array(teenEvent1, teenEvent2, teenEvent3, teenEvent4, teenEvent5);
 
 var adultEvents = new Array();
 
