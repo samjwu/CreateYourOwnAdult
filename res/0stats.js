@@ -6,6 +6,7 @@ window.ageMap = new Map([
     [2, "teen"],
     [3, "adult"],
     [4, "senior"],
+    [5, "dead"]
 ]);
 
 // using SugarCube's author-use setup object
