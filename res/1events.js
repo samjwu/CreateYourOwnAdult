@@ -416,6 +416,17 @@ var adultOutcome5_4 = {
     callback: function() {setup.changeCoreStats(-1, -1, 0)}
 };
 
+var seniorOutcome1_1 = {
+    description: "You are a mean one.\n \
+        People think that you are <span class='red'>crochety</span>.",
+    callback: function() {setup.changeCoreStats(0, 0, -1)}
+};
+var seniorOutcome1_2 = {
+    description: "The kids smile and wave at you.\n \
+        People think that you are <span class='red'>nice</span>.",
+    callback: function() {setup.changeCoreStats(0, 0, 1)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -622,7 +633,7 @@ var adultEvent4 = {
         ["Take some aspirin", adultOutcome4_2]
     ])
 };
-var adultEvent4 = {
+var adultEvent5 = {
     description: "Uh oh! You just got injured!\n\n\
         What were you doing?\n",
     options: new Map([
@@ -632,9 +643,17 @@ var adultEvent4 = {
         ["Bar fight", adultOutcome5_4],
     ])
 };
-var adultEvents = new Array(adultEvent1, adultEvent2, adultEvent3, adultEvent4);
+var adultEvents = new Array(adultEvent1, adultEvent2, adultEvent3, adultEvent4, adultEvent5);
 
-var seniorEvents = new Array();
+var seniorEvent1 = {
+    description: "Looks like there are some kids playing on your lawn.\n\n\
+        What do you do?\n",
+    options: new Map([
+        ["Shout 'Hey! Get off my lawn you whippersnappers!'", seniorOutcome1_1],
+        ["Let them be", seniorOutcome1_2],
+    ])
+};
+var seniorEvents = new Array(seniorEvent1);
 
 window.eventPool = new Array(babyEvents, childEvents, teenEvents, adultEvents, seniorEvents);
 
