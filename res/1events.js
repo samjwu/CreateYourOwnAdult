@@ -427,6 +427,15 @@ var seniorOutcome1_2 = {
     callback: function() {setup.changeCoreStats(0, 0, 1)}
 };
 
+var seniorOutcome2_1 = {
+    description: "The doctor prescribes some medicine to improve your <span class='red'>health</span>.",
+    callback: function() {setup.changeCoreStats(1, 0, 0)}
+};
+var seniorOutcome2_2 = {
+    description: "Your <span class='red'>health</span> slightly declines due to neglect.",
+    callback: function() {setup.changeCoreStats(-1, 0, 0)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -651,6 +660,14 @@ var seniorEvent1 = {
     options: new Map([
         ["Shout 'Hey! Get off my lawn you whippersnappers!'", seniorOutcome1_1],
         ["Let them be", seniorOutcome1_2],
+    ])
+};
+var seniorEvent2 = {
+    description: "Unfortunately, in your old age, you are having some health problems.\n\n\
+        How do you deal with this problem?\n",
+    options: new Map([
+        ["Go see a doctor", seniorOutcome2_1],
+        ["Ignore it", seniorOutcome2_2],
     ])
 };
 var seniorEvents = new Array(seniorEvent1);
