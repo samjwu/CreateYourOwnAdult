@@ -65,3 +65,9 @@ You become a little bit more <span class="red">sociable</span>
   setup.generateEvent("#event-text", "#event-options", eventPool[state.active.variables.age][eventNumber]);
   seenEvents.add(eventNumber);
 <</script>>
+
+:: Death {"position":"300,800"}
+You have passed the final choice in your life.
+[[See how you are remembered|Final Score]]
+
+:: Final Score {"position":"300,1000"}

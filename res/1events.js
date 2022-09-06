@@ -763,12 +763,18 @@ function generateOutcomeOnClick(textSelector, optionSelector, value, optionAncho
         $(textSelector).html(value.description);
         value.callback();
         state.active.variables.actionsPerformed += 1;
+
         if (state.active.variables.actionsPerformed >= 3) {
             state.active.variables.actionsPerformed = 0;
             seenEvents.clear();
             state.active.variables.age += 1;
-            $(optionSelector).html("Congratulations! You have grown older and become a <span class='yellow'>" 
-            + setup.getAgeString(state.active.variables.age)) + "</span>";
+
+            if (state.active.variables.age <= 4) {
+                $(optionSelector).html("Congratulations! You have grown older and become a <span class='yellow'>" 
+                    + setup.getAgeString(state.active.variables.age)) + "</span>";
+            } else {
+                Engine.play("Death");
+            }
         }
     };
 }
