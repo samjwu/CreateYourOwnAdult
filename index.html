@@ -596,6 +596,22 @@ var seniorOutcome2_2 = {
     callback: function() {setup.changeCoreStats(-1, 0, 0)}
 };
 
+var seniorOutcome3_1 = {
+    description: "Good question. I'm not really sure either.",
+    callback: function() {setup.changeCoreStats(0, 0, 0)}
+};
+var seniorOutcome3_2 = {
+    description: "Your grandkids get the idea that you have no idea what the idea is behind a meme.\n \
+        They're still happy that you tried, though.\n \
+        They <span class='red'>like</span> you a bit more.",
+    callback: function() {setup.changeCoreStats(0, 0, 1)}
+};
+var seniorOutcome3_3 = {
+    description: "The future is now, old man.\n \
+        You need to get with the times before they leave you <span class='blue'>behind</span>.",
+    callback: function() {setup.changeCoreStats(0, -1, 0)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -830,7 +846,16 @@ var seniorEvent2 = {
         ["Ignore it", seniorOutcome2_2],
     ])
 };
-var seniorEvents = new Array(seniorEvent1);
+var seniorEvent3 = {
+    description: "Your grandkids are visiting and share some memes with you.\n\n\
+        What do you do?\n",
+    options: new Map([
+        ["What in tarnation is a 'meem'?", seniorOutcome3_1],
+        ["Politely smile and nod", seniorOutcome3_2],
+        ["'Back in my day, we told jokes the old-fashioned way, without all these fancy doodads!'", seniorOutcome3_3]
+    ])
+};
+var seniorEvents = new Array(seniorEvent1, seniorEvent2, seniorEvent3);
 
 window.eventPool = new Array(babyEvents, childEvents, teenEvents, adultEvents, seniorEvents);
 
