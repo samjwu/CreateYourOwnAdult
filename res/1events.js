@@ -457,8 +457,17 @@ var seniorOutcome4_1 = {
     callback: function() {setup.changeCoreStats(0, 0, 0)}
 };
 var seniorOutcome4_2 = {
-    description: "Yeah, you're probably <span class='red'>right</span>.",
+    description: "Yeah, you're probably <span class='blue'>right</span>.",
     callback: function() {setup.changeCoreStats(0, 1, 0)}
+};
+
+var seniorOutcome5_1 = {
+    description: "Your attention oral hygiene improves your <span class='blue'>health</span> slightly.",
+    callback: function() {setup.changeCoreStats(1, 0, 0)}
+};
+var seniorOutcome5_2 = {
+    description: "Ok. Let your teeth <span class='green'>rot</span> then",
+    callback: function() {setup.changeCoreStats(-1, 0, 0)}
 };
 
 /*
@@ -714,7 +723,14 @@ var seniorEvent4 = {
         ["If you can't remember, it probably wasn't important", seniorOutcome4_2]
     ])
 };
-var seniorEvents = new Array(seniorEvent1, seniorEvent2, seniorEvent3);
+var seniorEvent5 = {
+    description: "It's about time you visited the dentist for a checkup.",
+    options: new Map([
+        ["Ok", seniorOutcome5_1],
+        ["No", seniorOutcome5_2]
+    ])
+};
+var seniorEvents = new Array(seniorEvent1, seniorEvent2, seniorEvent3, seniorEvent4, seniorEvent5);
 
 window.eventPool = new Array(babyEvents, childEvents, teenEvents, adultEvents, seniorEvents);
 
