@@ -612,6 +612,15 @@ var seniorOutcome3_3 = {
     callback: function() {setup.changeCoreStats(0, -1, 0)}
 };
 
+var seniorOutcome4_1 = {
+    description: "Hm. Well, whatever.",
+    callback: function() {setup.changeCoreStats(0, 0, 0)}
+};
+var seniorOutcome4_2 = {
+    description: "Yeah, you're probably <span class='red'>right</span>.",
+    callback: function() {setup.changeCoreStats(0, 1, 0)}
+};
+
 /*
 Event object
     description: text for the event settings
@@ -853,6 +862,16 @@ var seniorEvent3 = {
         ["What in tarnation is a 'meem'?", seniorOutcome3_1],
         ["Politely smile and nod", seniorOutcome3_2],
         ["'Back in my day, we told jokes the old-fashioned way, without all these fancy doodads!'", seniorOutcome3_3]
+    ])
+};
+var seniorEvent4 = {
+    description: "You noticed that you are starting to forget...\n\n\
+        ...what was I talking about?\n",
+    options: new Map([
+        ["What?", seniorOutcome4_1],
+        ["I don't know", seniorOutcome4_1],
+        ["I forget", seniorOutcome4_1],
+        ["If you can't remember, it probably wasn't important", seniorOutcome4_2]
     ])
 };
 var seniorEvents = new Array(seniorEvent1, seniorEvent2, seniorEvent3);
