@@ -428,11 +428,11 @@ var seniorOutcome1_2 = {
 };
 
 var seniorOutcome2_1 = {
-    description: "The doctor prescribes some medicine to improve your <span class='red'>health</span>.",
+    description: "The doctor prescribes some medicine to improve your <span class='green'>health</span>.",
     callback: function() {setup.changeCoreStats(1, 0, 0)}
 };
 var seniorOutcome2_2 = {
-    description: "Your <span class='red'>health</span> slightly declines due to neglect.",
+    description: "Your <span class='green'>health</span> slightly declines due to neglect.",
     callback: function() {setup.changeCoreStats(-1, 0, 0)}
 };
 
@@ -736,7 +736,7 @@ window.eventPool = new Array(babyEvents, childEvents, teenEvents, adultEvents, s
 
 window.seenEvents = new Set();
 
-function waitForElement(selector) {
+setup.waitForElement = function(selector) {
     return new Promise(resolve => {
         if (document.querySelector(selector)) {
             return resolve(document.querySelector(selector));
@@ -798,7 +798,7 @@ setup.generateEvent = function(textSelector, optionSelector, eventObject) {
         optionElements.push(optionAnchor);
     }
 
-    waitForElement(textSelector).then(() => {
+    setup.waitForElement(textSelector).then(() => {
         $(textSelector).html(eventObject.description);
 
         var eventTextElement = $(optionSelector).get(0);

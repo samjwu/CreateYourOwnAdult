@@ -589,11 +589,11 @@ var seniorOutcome1_2 = {
 };
 
 var seniorOutcome2_1 = {
-    description: "The doctor prescribes some medicine to improve your <span class='red'>health</span>.",
+    description: "The doctor prescribes some medicine to improve your <span class='green'>health</span>.",
     callback: function() {setup.changeCoreStats(1, 0, 0)}
 };
 var seniorOutcome2_2 = {
-    description: "Your <span class='red'>health</span> slightly declines due to neglect.",
+    description: "Your <span class='green'>health</span> slightly declines due to neglect.",
     callback: function() {setup.changeCoreStats(-1, 0, 0)}
 };
 
@@ -897,7 +897,7 @@ window.eventPool = new Array(babyEvents, childEvents, teenEvents, adultEvents, s
 
 window.seenEvents = new Set();
 
-function waitForElement(selector) {
+setup.waitForElement = function(selector) {
     return new Promise(resolve => {
         if (document.querySelector(selector)) {
             return resolve(document.querySelector(selector));
@@ -959,7 +959,7 @@ setup.generateEvent = function(textSelector, optionSelector, eventObject) {
         optionElements.push(optionAnchor);
     }
 
-    waitForElement(textSelector).then(() => {
+    setup.waitForElement(textSelector).then(() => {
         $(textSelector).html(eventObject.description);
 
         var eventTextElement = $(optionSelector).get(0);
@@ -970,7 +970,29 @@ setup.generateEvent = function(textSelector, optionSelector, eventObject) {
 }
 /* twine-user-script #3: "2final.js" */
 setup.determineFinalScore = function(textSelector) {
-    
+    var finalScoreText = "At your funeral, everyone remembers you for being ";
+
+    if (state.active.variables.strength >= 5 && state.active.variables.intelligence >= 5 && state.active.variables.charm >= 5) {
+        finalScoreText += "a <span class='yellow'>modern Renaissance person</span>, skilled in every aspect of life.";
+    } else if (state.active.variables.strength >= 5) {
+        finalScoreText += "a <span class='green'>superhuman</span>, capable of incredible physical feats.";
+    } else if (state.active.variables.intelligence >= 5) {
+        finalScoreText += "a <span class='blue'>genius</span>, with an intellect surpassing all your peers.";
+    } else if (state.active.variables.charm >= 5) {
+        finalScoreText += "a <span class='red'>charmer</span>, with charisma to spare.";
+    } else if (state.active.variables.strength == 4 || state.active.variables.intelligence == 4 || state.active.variables.charm == 4) {
+        finalScoreText += "a <span class='yellow'>wildly successful person</span> in life, though not quite great enough to be noted in history.";
+    } else if (state.active.variables.strength == 3 || state.active.variables.intelligence == 3 || state.active.variables.charm == 3) {
+        finalScoreText += "a <span class='yellow'>mildly successful person</span> in life, though unable to achieve anything notable.";
+    } else if (state.active.variables.strength == 2 || state.active.variables.intelligence == 2 || state.active.variables.charm == 2) {
+        finalScoreText += "a <span class='yellow'>nobody</span>, remembered by few and forgotten by many.";
+    } else {
+        finalScoreText += "an <span class='yellow'>utter failure</span>, failing to achieve anything in your lifetime.";
+    }
+
+    setup.waitForElement(textSelector).then(() => {
+        $(textSelector).html(finalScoreText);
+    });
 }</script><tw-passagedata pid="1" name="StorySubtitle" tags="" position="400,0" size="100,100">Create Your Own Adult</tw-passagedata><tw-passagedata pid="2" name="StoryCaption" tags="" position="600,0" size="100,100">&lt;span class=&quot;yellow&quot;&gt;Age:&lt;/span&gt; &lt;&lt;print setup.getAgeString($age)&gt;&gt;
 &lt;span class=&quot;green&quot;&gt;Strength&lt;/span&gt;: $strength
 &lt;span class=&quot;blue&quot;&gt;Intelligence&lt;/span&gt;: $intelligence 
