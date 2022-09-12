@@ -1,0 +1,3 @@
+setup.determineFinalScore = function(textSelector) {
+    
+}
