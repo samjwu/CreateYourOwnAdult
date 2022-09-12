@@ -22,6 +22,51 @@ setup.getAgeString = function(ageInt) {
     return ageMap.get(ageInt);
 }
 
+setup.getStrString = function(val) {
+    if (val <= 0) {
+        return "feeble";
+    } else if (val == 1) {
+        return "weak";
+    } else if (val == 2) {
+        return "soft";
+    } else if (val == 3) {
+        return "strong";
+    } else if (val == 4) {
+        return "powerful";
+    }
+    return "herculean";
+}
+
+setup.getIntString = function(val) {
+    if (val <= 0) {
+        return "brainless";
+    } else if (val == 1) {
+        return "foolish";
+    } else if (val == 2) {
+        return "mediocre";
+    } else if (val == 3) {
+        return "intelligent";
+    } else if (val == 4) {
+        return "brilliant";
+    }
+    return "genius";
+}
+
+setup.getChaString = function(val) {
+    if (val <= 0) {
+        return "repugnant";
+    } else if (val == 1) {
+        return "offensive";
+    } else if (val == 2) {
+        return "unfriendly";
+    } else if (val == 3) {
+        return "charming";
+    } else if (val == 4) {
+        return "magnetizing";
+    }
+    return "transcendental";
+}
+
 setup.changeStrength = function(change) {
     state.active.variables.strength += change;
 }
