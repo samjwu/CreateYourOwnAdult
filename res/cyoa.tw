@@ -13,9 +13,12 @@ CYOA
 Create Your Own Adult
 
 :: StoryCaption {"position":"600,0"}
-<span class="yellow">Age:</span> <<print setup.getAgeString($age)>>
+<span class="yellow">Aged:</span> <<print setup.getAgeString($age)>>
+<br><br>
 <span class="green">Strength</span>: <<print setup.getStrString($strength)>>
+
 <span class="blue">Intelligence</span>: <<print setup.getIntString($intelligence)>>
+
 <span class="red">Charm</span>: <<print setup.getChaString($charm)>>
 
 :: Start {"position":"100,200"}
